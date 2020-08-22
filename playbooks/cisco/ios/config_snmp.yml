@@ -1,0 +1,42 @@
+---
+- hosts: all
+  gather_facts: no
+
+
+
+  tasks:
+ 
+  - name: SET COMMUNITY STRING 
+    ios_config:
+      lines:
+        - snmp-server community ansibull RO 99
+
+  - name: TRAP-SOURCE LOOPBACK0 
+    ios_config:
+      lines:
+         - snmp-server trap-source Loopback0
+
+  - name: SET CONTACT INFO 
+    ios_config:
+      lines:
+        - snmp-server contact colin@thenetwork.engineer
+
+  - name: ENABLE OSPF TRAPS 
+    ios_config:
+      lines:
+        - snmp-server enable traps ospf state-change
+        - snmp-server enable traps ospf errors
+        - snmp-server enable traps ospf retransmit
+        - snmp-server enable traps ospf lsa
+        - snmp-server enable traps ospf cisco-specific errors
+        - snmp-server enable traps ospf cisco-specific retransmit
+        - snmp-server enable traps ospf cisco-specific lsa
+
+
+  - name: SET SNMP SERVER ADDRESS 
+    ios_config:
+      lines:
+        - snmp-server host 192.168.161.110 version 2c public udp-port 161
+
+
+
