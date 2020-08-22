@@ -1,0 +1,10 @@
+---
+- hosts: ios
+  gather_facts: no
+
+
+  tasks:
+  - name: BACK UP CONFIG 
+    ios_config:
+      backup: yes
+      
