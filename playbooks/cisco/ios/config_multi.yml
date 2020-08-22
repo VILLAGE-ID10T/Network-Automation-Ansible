@@ -1,0 +1,55 @@
+#Cisco IOS 12.2 Hardening Playbook
+#
+#+ no service pad
+#+ ip ssh version 2
+#+ no ip domain-lookup
+#+ no ip http server
+#+ no ip http secure-server
+#+ no cdp run
+#+ transport input ssh
+#+ logging buffered 15000
+
+
+- hosts: ios
+  gather_facts: no
+
+
+  tasks:
+ 
+  - name: NO SERVICE PAD 
+    ios_config:
+      lines:
+        - no service pad
+
+  - name: IP SSH VERSION 2 
+    ios_config:
+      lines:
+        - ip ssh version 2
+
+  - name: NO IP DOMAIN-LOOKUP
+    ios_config:
+      lines:
+        - no ip domain-lookup
+
+  - name: DISABLE HTTP/HTTPS MANAGMENT 
+    ios_config:
+      lines:
+        - no ip http server
+        - no ip http secure-server
+
+  - name: DISABLE CDP 
+    ios_config:
+      lines:
+        - no cdp run
+
+  - name: TRANSPORT INPUT SSH 
+    ios_config:
+      lines:
+        - line vty 0 15
+        - transport input ssh
+
+  - name: LOGGING BUFFERED 15000 
+    ios_config:
+      lines:
+        - logging buffered 15000
+        
