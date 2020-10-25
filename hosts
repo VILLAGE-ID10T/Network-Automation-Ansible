@@ -1,9 +1,9 @@
 [all:children]
 switches
 routers
-web-servers
-win-hosts
-nix-hosts
+web_servers
+win_hosts
+nix_hosts
 
 [switches]
 SWA-10
